@@ -79,3 +79,7 @@ alert('teste');
     "dev": "babel ./main.js -o ./bundle.js -w"
   }
 ```
+
+
+Alterar o arquivo `index.html` com uma estrutura padrão e incluir o script `bundle.js`
+
