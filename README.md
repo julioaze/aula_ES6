@@ -30,6 +30,8 @@
   - Interface de linha de comando do Babel
 - Instalar a segunda dependência: `yarn add @babel/preset-env`
   - Identifica o ambiente que estamos trabalhando (navegador, no nosso caso)
+- Instalar a terceira dependência: `yarn add @babel/core`
+  - É o núcleo do Babel
 
 * Checar a estrutura de arquivos criada
 * Se for usar controle de versão (como o git), essa é um boa para criar o `.gitignore`
@@ -44,6 +46,36 @@
 ```
 
 
+## Criar mais arquivos para o primeiro teste
+**index.html**
+
+**main.js**
+
+```javascript
+alert('teste');
+```
+
+## Configurar o package.json
+
+```json
+"scripts": {
+    "dev": "babel ./main.js -o ./bundle.js"
+  }
+```
 
 
+Executar o comando `yarn dev`
 
+**Alterar o arquivo `main.js`**
+```javascript
+alert('teste');
+```
+
+
+**Alterar o arquivo `package.json` para que o babel monitore as alterações
+
+```json
+"scripts": {
+    "dev": "babel ./main.js -o ./bundle.js -w"
+  }
+```
