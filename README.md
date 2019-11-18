@@ -225,3 +225,47 @@ console.log(Matematica.soma(4, 10));
 ```
 
 
+## Cont e Let ##
+
+Constantes e variáveis de escopo
+
+keyword tradicional é `var`
+
+Duas novas keywords: `const` e `let`
+
+Uma `constante` não pode ter o seu valor reatribuído, ou seja, ela é do tipo read only (somente leitura)
+
+**exemplo**
+```javascript
+// o exemplo retornará um erro, pois não se pode reatribuir um valor a uma constante
+const numero = 1;
+
+numero = 3;
+```
+
+Entretanto a constante pode sofre mutação. O formato do objeto não muda, mas podemos alterar o seu valor.
+
+```javascript
+const usuario = {nome: 'Julio'};
+
+usuario.nome = 'Alessandra';
+```
+
+**Variáveis de escopo**
+
+A variável de escopo `let` é visivel somente dentro do escopo onde ela está contida. Escopo é o corpo de uma função ou método, cercado por chaves `{}`
+
+```javascript
+function teste(x){
+  let y = 2;
+
+  if(x > 5) {
+    let y = 4;
+
+    console.log(x, y);
+  }
+}
+teste(10);
+
+// o console abaixo exibiria um erro, pois a variável Y somente é visivel dentro do escopo da função teste
+console.log(y);
