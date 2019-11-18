@@ -1,13 +1,5 @@
-class TodoList {
-  constructor(){
-    this.todos = [];
-  }
+const arr = [1, 2, 3, 4, 5];
 
-  static addTodo(){
-    // o método não enxerga o 'this.todos' que está no construtor
-    this.todos.push('Novo todo');
-    console.log(this.todos);
-  }
-}
+const teste = () => 'teste';
 
-TodoList.addTodo();
+console.log(teste());

@@ -270,3 +270,187 @@ teste(10);
 
 // o console abaixo exibiria um erro, pois a variável Y somente é visivel dentro do escopo da função teste
 console.log(y);
+```
+
+
+## Operações com Vetores (Array) ##
+
+Na forma tradicional, para se manipular um array era preciso utilizar o método `for` para percorrer um array e assim manipular seu conteúdo.
+
+Com a chegada do ES6 é possível percorrer, manipular, filtrar, encontrar valores, enfim, tudo de forma muito prática e menos verbosa.
+
+**Map**
+Percorre o vetor e retorna uma nova informação de dentro dele.
+
+```javascript
+const arr = [1, 2, 3, 4, 5, 6];
+
+const newArr = arr.map(function(item) {
+  return item * 2;
+});
+
+console.log(newArr);
+```
+
+Além do valor (item) a função também pode receber o index do elemento dentro do array
+
+```javascript
+const arr = [1, 2, 3, 4, 5, 6];
+
+const newArr = arr.map(function(item, index) {
+  return item + index;
+});
+
+console.log(newArr);
+```
+
+
+**Reduce**
+
+Consumir todo o vetor e tranformar em uma única informação, geralmente um número. Como parametros a função recebe o `total` e o próximo valor `next`. Cada vez que a função for executada ela vai pegar o valor do retorno e 'jogar' no total da próxima vez que a função for executada.
+
+```javascript
+const arr = [1, 3, 5, 7, 9];
+
+
+const soma = arr.reduce(function(total, next) {
+  return total + next;
+});
+
+console.log(soma);
+
+// na primeira vez
+// total = 0
+// next = 1
+// na segunda vez
+// total = 1
+// next = 3
+// na terceira vez
+// total = 4
+// next = 5
+```
+
+
+**Filter**
+
+Suponha que você queria retornar todos os números pares do array. Retorna `true` caso queria que o item seja mantido no array ou `false` caso ele deva ser descartado. A função `filter` a exemplo da função map, também recebe cada item do vetor.
+
+```javascript
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const filter = arr.filter(function(item) {
+  // sempre vai retornar um boleano, pois estamos fazendo uma comparação
+  return item % 2 === 0;
+
+});
+
+console.log(filter);
+```
+
+
+**Find**
+
+Utilizado quando precisamos verificar se uma informação existe dentro do vetor. A função também recebe cada item como parâmetro e retorna sempre um valor boleano.
+
+```javascript
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const find = arr.find(function(item) {
+  return item === 4;
+});
+
+console.log(find);
+
+```
+
+
+
+## Arrow function ##
+
+Essa é umas das funcionalidades mais legais e mais utilizadas do ES6
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+
+const newArr = arr.map(function(item) {
+  return item * 2;
+});
+
+console.log(newArr);
+
+```
+
+A função de retorno dentro do map não tem um nome definido, por exemplo `function soma`. Então ela é considerada uma função anonima. Esse é o melhor local pra se usar as `arrow functions`. 
+
+- Passo 1 : Remover a keyword `function`
+- Passo 2 : Após o parentese que recebe o parâmetro da função, incluir os sinais de `=` e `>`, simbolizando dessa forma, uma flecha (arrow).
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+
+const newArr = arr.map((item) => {
+  return item * 2;
+});
+
+console.log(newArr);
+
+```
+
+- Passo 3 : Se a função receber apenas um parâmetro, podemos remover o parêntese que envolve o parâmetro
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+
+const newArr = arr.map(item => {
+  return item * 2;
+});
+
+console.log(newArr);
+
+```
+
+
+- Passo 4 : Se o retorno da função é somente uma informação simples, sem vários retornos, podemos retornar a ação diretamente.
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+
+const newArr = arr.map(item => item * 2);
+
+console.log(newArr);
+
+```
+
+Também é possível criar funções utilizando constantes:
+
+```javascript
+
+function teste() {
+  // corpo da função
+};
+
+// pode ser escrito
+const teste = () => {
+  // corpo da função
+  return 'teste';
+}
+
+const teste2 = () => 'Teste';
+
+console.log(teste());
+```
+
+Porém o método acima não é recomendado pelo ES6, embora funcione.
+
+Vimos que é possível retornar qualquer coisa diretamente na função, porém o mesmo não vale para objetos:
+
+```javascript
+const teste = () => { nome: 'Julio'};
+// retornara undefined pois as chaves fazer parte do corpo de uma função
+```
+
+Neste caso, basta colocar um parêntese por volta do objeto:
+
+```javascript
+const teste = () => ({ nome: 'Julio'});
+```
