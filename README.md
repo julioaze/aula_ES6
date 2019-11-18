@@ -83,3 +83,100 @@ alert('teste');
 
 Alterar o arquivo `index.html` com uma estrutura padrão e incluir o script `bundle.js`
 
+
+
+## Classes ##
+
+**main.js**
+```javascript
+class TodoList {
+  // primeiro método que é chamado numa classe
+  // executa ações assim que o objeto é criado ou
+  // iniciar variáveis
+  constructor(){
+    this.todos = [];
+  }
+
+  // os métodos tem sintaxe mais simples em relação as funções
+  addTodo() {
+    // aqui é possível acessar o this
+    this.todos.push('Novo todo');
+    console.log(this.todos);
+  }
+}
+
+// instanciar a classe
+const MinhaLista = new TodoList();
+
+document.getElementById('novotodo').onclick = function(){
+  MinhaLista.addTodo();
+}
+```
+
+### Herança ###
+
+**main.js**
+```javascript
+class List {
+  constructor(){
+    this.data = [];    
+  }
+
+  add(data) {
+    this.data.push(data);
+    console.log(this.data);
+  }
+}
+
+class TodoList extends List {
+  // classe vazia pois ela herdou os métodos da classe List
+}
+
+// instanciar a classe
+const MinhaLista = new TodoList();
+
+document.getElementById('novotodo').onclick = function(){
+  MinhaLista.add('Novo todo');
+}
+```
+
+### Acessar construtor da classe pai ###
+
+Quando precisamos iniciar algo na classe atual não podemos sobrescrever o constructor da classe pai
+
+**main.js**
+
+```javascript
+class List {
+  constructor(){
+    this.data = [];    
+  }
+
+  add(data) {
+    this.data.push(data);
+    console.log(this.data);
+  }
+}
+
+class TodoList extends List {
+  constructor() {
+    // acessa o contructor da classe pai e o mantém
+    super();
+
+    this.usuario = 'Julio Azevedo'
+  }
+
+  exibeUsuario() {
+    console.log(this.usuario);
+  }
+}
+
+// instanciar a classe
+const MinhaLista = new TodoList();
+
+document.getElementById('novotodo').onclick = function(){
+  MinhaLista.add('Novo todo');
+}
+
+MinhaLista.exibeUsuario();
+```
