@@ -1,32 +1,13 @@
-class List {
+class TodoList {
   constructor(){
-    this.data = [];    
+    this.todos = [];
   }
 
-  add(data) {
-    this.data.push(data);
-    console.log(this.data);
-  }
-}
-
-class TodoList extends List {
-  constructor() {
-    // acessa o contructor da classe pai
-    super();
-
-    this.usuario = 'Julio Azevedo'
-  }
-
-  exibeUsuario() {
-    console.log(this.usuario);
+  static addTodo(){
+    // o método não enxerga o 'this.todos' que está no construtor
+    this.todos.push('Novo todo');
+    console.log(this.todos);
   }
 }
 
-// instanciar a classe
-const MinhaLista = new TodoList();
-
-document.getElementById('novotodo').onclick = function(){
-  MinhaLista.add('Novo todo');
-}
-
-MinhaLista.exibeUsuario();
+TodoList.addTodo();

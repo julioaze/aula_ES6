@@ -180,3 +180,48 @@ document.getElementById('novotodo').onclick = function(){
 
 MinhaLista.exibeUsuario();
 ```
+
+**Métodos Estáticos**
+
+Não precisamos usar a palavra reservada `New` para chamar os métodos dela
+O método estático não enxerga o resto da classe
+
+**main.js**
+```javascript
+class TodoList {
+  constructor(){
+    this.todos = [];
+  }
+
+  static addTodo(){
+    // o método não enxerga o 'this.todos' que está no construtor
+    this.todos.push('Novo todo');
+    console.log(this.todos);
+  }
+}
+
+TodoList.addTodo();
+```
+
+```
+bundle.js:22 Uncaught TypeError: Cannot read property 'push' of undefined
+    at Function.addTodo (bundle.js:22)
+    at bundle.js:30
+```
+
+O método estático recebe uma informação e retorna outra informação, independente do resto da classe.
+Normalmente quando um método estático é declarado, não há o métdo `constructor`. Esse método é apenas um auxiliar.
+Neste caso não precisamos instanciar uma nova classe e ele também não depende de nenhum outro método para ser executado.
+
+**exemplo**
+```javascript
+class Matematica() {
+  static soma(a, b){
+    return a + b;
+  }
+}
+
+console.log(Matematica.soma(4, 10));
+```
+
+
