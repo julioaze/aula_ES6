@@ -225,7 +225,7 @@ console.log(Matematica.soma(4, 10));
 ```
 
 
-## Cont e Let ##
+## Const e Let ##
 
 Constantes e variáveis de escopo
 
@@ -250,6 +250,7 @@ const usuario = {nome: 'Julio'};
 
 usuario.nome = 'Alessandra';
 ```
+
 
 **Variáveis de escopo**
 
