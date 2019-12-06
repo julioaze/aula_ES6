@@ -454,3 +454,125 @@ Neste caso, basta colocar um parêntese por volta do objeto:
 ```javascript
 const teste = () => ({ nome: 'Julio'});
 ```
+
+
+## Valores Padrão ##
+
+Permite definir um valor padrão nos parâmetros da função. Serve também para as `Arrow funcitions`
+
+```javascript
+function soma(a, b) {
+  return a + b;
+}
+
+console.log(soma(1));
+// NaN
+console.log(soma());
+// NaN
+```
+
+```javascript
+function soma(a = 3, b = 6) {
+  return a + b;
+}
+
+const soma = (a = 3, b = 6) => a + b;
+}
+
+console.log(soma(1));
+// 7
+console.log(soma());
+// 9
+```
+
+
+## Desestruturação de Objetos ##
+
+**Exemplo**
+
+```javascript
+const usuario = {
+  nome: 'Julio',
+  idade: '18',
+  endereco: {
+    cidade: 'Monstes Claros',
+    estado: 'MG'
+  },
+};
+
+console.log(usuario);
+```
+
+Suponha que você queria o nome do usuário, a idade e o estado. Normalmente faríamos com o exemplo abaixo:
+
+```javascript
+const usuario = {
+  nome: 'Julio',
+  idade: '18',
+  endereco: {
+    cidade: 'Monstes Claros',
+    estado: 'MG'
+  },
+};
+
+const nome = usuario.nome;
+const idade = usuario.idade;
+const estado = usuario.endereco.estado;
+```
+
+Note que foram necessárias 3 linhas de código para retornar informações simples. Agora, vejamos com fica com a desestruturação do objeto `usuario`
+
+```javascript
+const usuario = {
+  nome: 'Julio',
+  idade: '18',
+  endereco: {
+    cidade: 'Monstes Claros',
+    estado: 'MG'
+  },
+};
+
+const { nome, idade, endereco: { estado } } = usuario;
+
+console.log(nome);
+console.log(idade);
+console.log(estado);
+```
+
+**Exemplo 2**
+
+```javascript
+const usuario = {
+  nome: 'Julio',
+  idade: '18',
+  endereco: {
+    cidade: 'Monstes Claros',
+    estado: 'MG'
+  },
+};
+
+function mostraNome(usuario) {
+  console.log(usuario.nome);
+}
+
+mostraNome(usuario);
+```
+
+Desestruturando...
+
+```javascript
+const usuario = {
+  nome: 'Julio',
+  idade: '18',
+  endereco: {
+    cidade: 'Monstes Claros',
+    estado: 'MG'
+  },
+};
+
+function mostraNome({ nome, idade }) {
+  console.log(nome);
+}
+
+mostraNome(usuario);
+```
