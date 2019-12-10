@@ -1,9 +1,5 @@
 "use strict";
 
-var arr = [1, 2, 3, 4, 5];
-
-var teste = function teste() {
-  return 'teste';
-};
-
-console.log(teste());
+var nome = 'Julio';
+var idade = 18;
+console.log('Meu nome é ' + nome + ' e tenho ' + idade + ' anos');

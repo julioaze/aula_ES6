@@ -576,3 +576,135 @@ function mostraNome({ nome, idade }) {
 
 mostraNome(usuario);
 ```
+
+
+## Operadores Rest/Spread ##
+
+**Spread**
+A sintaxe de propagação (Spread) é representada por três pontos encadeados `...` e permite que um objeto iterável, como um array ou string, seja expandida em locais onde zero ou mais argumentos (para chamadas de função) ou elementos (para literais de array) sejam esperados ou uma expressão de objeto seja expandida em locais onde zero ou mais pares de chave-valor (para literais de objeto) são esperados.
+
+***Exemplo***
+```javascript
+var partes = ['ombros', 'joelhos'];
+var letra = ['cabeca', ...partes, 'e', 'dedos'];
+console.log(letra);
+// ["cabeca", "ombros", "joelhos", "e", "dedos"]
+
+
+
+const usuario = {
+  nome: 'Julio',
+  cargo: 'Instrutor',
+  empresa: 'Cebrac'
+}
+
+const usuario2 = { ...usuario, nome: 'Roger' };
+
+// {nome: "Roger", cargo: "Instrutor", empresa: "Cebrac"}
+```
+
+
+**Rest**
+
+Pega o 'resto' das propriedades
+
+***Exemplo***
+```javascript
+const usuario = {
+  nome: 'Julio',
+  cargo: 'Instrutor',
+  empresa: 'Cebrac'
+}
+
+const { nome, ...resto } = usuário;
+
+console.log(nome);
+console.log(resto);
+
+// Julio
+// ["Instrutor", "Cebrac"]
+```
+
+Também pode ser utilizado como parâmetro de funções
+
+***Exemplo***
+```javascript
+function soma (a, b, c) {
+  return a + b + c;
+}
+
+console.log(soma(1,3,6));
+
+// 10
+
+function soma (...params) {
+  return params;
+}
+
+console.log(soma(1,3,6));
+
+// [1, 3, 6]
+
+
+function soma (...params) {
+  return params.reduce((total, next) => total + next);
+}
+
+console.log(soma(1,3,6));
+
+// 10
+
+
+function soma (a, b, ...params) {
+  return params;
+}
+
+console.log(soma(1,3,6,8,10,21));
+
+// [6,8,10,21]
+```
+
+
+
+## Template Literals ##
+
+Inclusão de variáveis dentro de strings de forma simples.
+
+No javascript anterior ao ES6:
+```javascript
+const nome = 'Julio';
+const idade = 18;
+
+console.log('Meu nome é ' + nome + ' e tenho ' + idade + ' anos');
+
+// ES6
+console.log(`Meu nome é ${nome} e tenho ${idade} anos`);
+```
+
+
+## Object Short Sythax ##
+
+***Exemplo***
+
+```javascript
+const nome: 'Julio';
+const cargo: 'Instrutor';
+
+const usuário = {
+  nome: nome,
+  cargo: cargo,
+  empresa: 'Cebrac',
+};
+
+//ES6
+const usuário = {
+  nome,
+  cargo,
+  empresa: 'Cebrac',
+};
+```
+
+
+# Desafios #
+
+https://drive.google.com/file/d/1vCvtM8k_W6L5U-w6mfhY1m7a2p3qlA9J/view?usp=sharing

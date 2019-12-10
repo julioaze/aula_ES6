@@ -1,5 +1,4 @@
-const arr = [1, 2, 3, 4, 5];
+const nome = 'Julio';
+const idade = 18;
 
-const teste = () => 'teste';
-
-console.log(teste());
+console.log('Meu nome é ' + nome + ' e tenho ' + idade + ' anos');
